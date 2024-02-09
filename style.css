@@ -1,45 +1,43 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 :root {
   --gradient-h1: linear-gradient(
-    45deg,
-    rgb(179, 4, 248, 0.7),
-    rgb(48, 12, 255, 0.7),
-    rgb(9, 66, 250, 0.7),
-    rgb(75, 12, 210),
-    rgb(70, 7, 200),
-    rgba(92, 255, 114, 0.5),
-    rgba(0, 255, 34, 0.5)
+    90deg,
+    rgb(194, 79, 14),
+    rgba(202, 106, 26),
+    rgb(208, 125, 32),
+    rgb(233, 200, 57)
   );
   --gradient-body: linear-gradient(
-    45deg,
-    rgb(179, 4, 248, 0.7),
-    rgb(48, 12, 255, 0.7),
-    rgb(9, 66, 250, 0.7),
-    rgb(9, 250, 170, 0.7),
-    rgb(255, 124, 1, 0.7)
+    90deg,
+    rgb(233, 200, 57),
+    rgb(218, 162, 44),
+    rgb(208, 125, 32),
+    rgba(202, 106, 26),
+    rgb(194, 79, 14)
   );
 }
 
 body {
   background-image: var(--gradient-body);
-  background-size: 200% 100%;
+  background-size: 100% 100%;
   min-height: 100vh;
-  animation: h1-animation 8s infinite alternate;
   display: flex;
   justify-content: center;
   margin-top: 200px;
 }
 h1 {
   background-image: var(--gradient-h1);
-  background-size: 200% 100%;
+  background-size: 500% 100%;
   background-clip: text;
+  animation: h1-animation 8s infinite alternate;
   -webkit-background-clip: text;
   color: transparent;
   text-align: center;
   font-size: 3rem;
-  animation: h1-animation 8s infinite alternate;
 }
 @keyframes h1-animation {
   0% {
@@ -49,14 +47,15 @@ h1 {
     background-position: 100% 50%;
   }
 }
-
-input:focus {
-  outline: none;
-  border: 2px solid rgb(234, 2, 255);
-}
 input {
   border-radius: 5px;
-  border: 2px solid rgb(9, 250, 170);
+  border: 2px solid rgb(255, 158, 2);
+  background-color: rgb(220, 163, 73);
+  padding: 10px 5px;
+}
+input:focus {
+  outline: none;
+  border: 2px solid rgb(255, 2, 2);
 }
 
 .search-container {
@@ -69,30 +68,29 @@ input {
 /* .search-container input, */
 .search-container .suggestions {
   display: none;
-  border: 2px solid rgb(234, 2, 255);
   border-radius: 5px;
-  background-color: rgba(92, 255, 114, 0.2);
-
+  background-color: rgb(220, 163, 73);
   max-height: 300px;
   overflow-y: auto;
   width: 100%;
-  margin-top: 2px;
+  margin-top: 0;
+  margin-left: 0;
 }
 
 ul {
-  margin-top: 5px;
+  margin-top: 0;
+  list-style: none;
+  padding-left: 0;
 }
 li {
   margin-top: 5px;
+  padding: 8px 5px;
+}
+li:first-child {
+  margin-top: 0;
 }
 
-ul li span {
-  padding-right: 5px;
-  padding-left: 5px;
-}
 .highlight {
   cursor: pointer;
-  background-color: rgb(185, 185, 250);
-  border-radius: 5px;
+  background-color: rgb(194, 79, 14);
 }
-

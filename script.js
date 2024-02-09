@@ -110,17 +110,15 @@ function showSuggestions(results, inputVal) {
 
     results.forEach((fruit) => {
       const li = document.createElement("li");
-      const span = document.createElement("span");
-      span.textContent = fruit;
-      li.appendChild(span);
+      li.textContent = fruit;
       suggestionsList.appendChild(li);
 
       //Adding hover event listener
-      span.addEventListener("mouseover", () => {
-        span.classList.add("highlight"); //Add highlight class on mouseover
+      li.addEventListener("mouseover", () => {
+        li.classList.add("highlight"); //Add highlight class on mouseover
       });
-      span.addEventListener("mouseout", () => {
-        span.classList.remove("highlight"); //Remove class on mouseout
+      li.addEventListener("mouseout", () => {
+        li.classList.remove("highlight"); //Remove class on mouseout
       });
 
       //Adding click event to fill input when a suggestion is clicked
