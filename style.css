@@ -57,26 +57,6 @@ input:focus {
   outline: none;
   border: 2px solid rgb(255, 2, 2);
 }
-
-.search-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-/* .search-container input, */
-.search-container .suggestions {
-  display: none;
-  border-radius: 5px;
-  background-color: rgb(220, 163, 73);
-  max-height: 300px;
-  overflow-y: auto;
-  width: 100%;
-  margin-top: 0;
-  margin-left: 0;
-}
-
 ul {
   margin-top: 0;
   list-style: none;
@@ -89,7 +69,26 @@ li {
 li:first-child {
   margin-top: 0;
 }
-
+#fruit::placeholder {
+  color: rgb(0, 0, 0);
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.search-container .suggestions {
+  display: none;
+  border-radius: 5px;
+  background-color: rgb(220, 163, 73);
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  margin-top: 0;
+  margin-left: 0;
+}
 .highlight {
   cursor: pointer;
   background-color: rgb(194, 79, 14);
