@@ -107,13 +107,17 @@ function showSuggestions(results, inputVal) {
     suggestionDropDown.style.display = "block";
 
     results.forEach((fruit) => {
+      const matchStartIndex = fruit.toLowerCase().indexOf(inputVal.toLowerCase());
+      const matchEndIndex = matchStartIndex + inputVal.length;
+      const beforeMatch = fruit.substring(0, matchStartIndex);
+      const matchText = fruit.substring(matchStartIndex, matchEndIndex);
+      const afterMatch = fruit.substring(matchEndIndex);
+      
       const li = document.createElement("li");
-      const match = new RegExp(`${inputVal}`);
-      const newStr = fruit.replace(match, `<strong>${inputVal}</strong>`);
-      // li.textContent = fruit;
-      li.innerHTML = newStr;
-      console.log(newStr);
+      // Using innerHTML to include <strong> tag for bolding the matched part
+      li.innerHTML = `${beforeMatch}<strong>${matchText}</strong>${afterMatch}`;
       suggestionsList.appendChild(li);
+
 
       //Adding hover event listener
       li.addEventListener("mouseover", () => {
