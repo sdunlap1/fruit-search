@@ -91,7 +91,7 @@ function search(str) {
   return results;
 }
 //Set this outside of the search function so it doesn't repeatedly get attached.
-input.addEventListener("change", (evt) => {
+input.addEventListener("input", (evt) => {
   const inputValue = evt.target.value;
   const filtered = search(inputValue); //Use current input value as the search
   showSuggestions(filtered, inputValue);
