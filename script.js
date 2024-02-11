@@ -91,7 +91,7 @@ function search(str) {
   return results;
 }
 //Set this outside of the search function so it doesn't repeatedly get attached.
-input.addEventListener("input", (evt) => {
+input.addEventListener("change", (evt) => {
   const inputValue = evt.target.value;
   const filtered = search(inputValue); //Use current input value as the search
   showSuggestions(filtered, inputValue);
@@ -107,18 +107,12 @@ function showSuggestions(results, inputVal) {
     suggestionDropDown.style.display = "block";
 
     results.forEach((fruit) => {
-      //Setup variables to calc the start and end of the match
-      const matchStartIndex = fruit.toLowerCase().indexOf(inputVal.toLowerCase());
-      const matchEndIndex = matchStartIndex + inputVal.length;
-
-      //Splitting the fruit name into 3 parts
-      const beforeMatch = fruit.substring(0, matchStartIndex);
-      const matchText = fruit.substring(matchStartIndex, matchEndIndex);
-      const afterMatch = fruit.substring(matchEndIndex);
-
-      const li = document.createElement("li"); //Create new li for each match
-
-      li.innerHTML = `${beforeMatch}<strong>${matchText}</strong>${afterMatch}`;
+      const li = document.createElement("li");
+      const match = new RegExp(`${inputVal}`);
+      const newStr = fruit.replace(match, `<strong>${inputVal}</strong>`);
+      // li.textContent = fruit;
+      li.innerHTML = newStr;
+      console.log(newStr);
       suggestionsList.appendChild(li);
 
       //Adding hover event listener
@@ -140,3 +134,5 @@ function showSuggestions(results, inputVal) {
     suggestionDropDown.style.display = "none";
   }
 }
+
+
