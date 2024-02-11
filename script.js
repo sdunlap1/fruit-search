@@ -97,8 +97,6 @@ input.addEventListener("input", (evt) => {
   showSuggestions(filtered, inputValue);
 });
 
-
-
 function showSuggestions(results, inputVal) {
   const suggestionDropDown = document.querySelector(".suggestions");
   const suggestionsList = document.querySelector("ul");
@@ -109,8 +107,18 @@ function showSuggestions(results, inputVal) {
     suggestionDropDown.style.display = "block";
 
     results.forEach((fruit) => {
-      const li = document.createElement("li");
-      li.textContent = fruit;
+      //Setup variables to calc the start and end of the match
+      const matchStartIndex = fruit.toLowerCase().indexOf(inputVal.toLowerCase());
+      const matchEndIndex = matchStartIndex + inputVal.length;
+
+      //Splitting the fruit name into 3 parts
+      const beforeMatch = fruit.substring(0, matchStartIndex);
+      const matchText = fruit.substring(matchStartIndex, matchEndIndex);
+      const afterMatch = fruit.substring(matchEndIndex);
+
+      const li = document.createElement("li"); //Create new li for each match
+
+      li.innerHTML = `${beforeMatch}<strong>${matchText}</strong>${afterMatch}`;
       suggestionsList.appendChild(li);
 
       //Adding hover event listener
@@ -132,5 +140,3 @@ function showSuggestions(results, inputVal) {
     suggestionDropDown.style.display = "none";
   }
 }
-
-
